@@ -9,15 +9,15 @@
 </head>
 <body>
     <div id="main">
-        <?php   //Genera los numeros del sorteo
-            require_once 'Sorteo.php';
-            $s = new Sorteo();
-            $sorteo = $s->getNumeros();
-        ?>
         <header>
             <h1>Sorteo de quiniela del dia de hoy</h1>
         </header>
         <div id="main_php">
+            <?php   //Genera los numeros del sorteo
+                require_once 'Sorteo.php';
+                $s = new Sorteo();
+                $sorteo = $s->getNumeros();
+            ?>
             <div id="php1"> 
                 <?php   //Muestas los primeros 10 numeros
                     for($n=1; $n<=10; $n++){

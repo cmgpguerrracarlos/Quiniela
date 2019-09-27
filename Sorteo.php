@@ -23,6 +23,33 @@ class Sorteo{
         }
         return $salida; 
     }
+
+    //public function imprimir(){}
+
+    public function verificador($nro, $rango){
+        $tope;
+        if($rango == "v"){
+            $tope=20;
+        }else if($rango == "d"){
+            $tope=10;
+        }else{
+            $tope=1;
+        }
+        //v*3 d*7 c*15  v* 
+        for($i=1;$i<=$tope;$i++){
+            if($nro > 99){
+                if($nro == $this->numeros[$i]){
+                    $ganar = true;
+                }
+            }else{
+                $resto = $this->numeros[$i] % 100;
+                if($resto == $nro){
+                    $ganar = true;
+                }
+            }                        
+        }
+        return $ganancia;
+    }
 };
 
 ?>
