@@ -39,48 +39,12 @@
                     $opcion = $_POST['opcion'];
                     $ganar = false;
 
-                    if($opcion == "v"){
-                        for($i=1;$i<=20;$i++){
-                            if($apuesta > 99){
-                                if($apuesta == $sorteo[$i]){
-                                    $ganar = true;
-                                }
-                            }else{
-                                $resto = $sorteo[$i] % 100;
-                                if($resto == $apuesta){
-                                    $ganar = true;
-                                }
-                            }                        
-                        }
-                    }else if($opcion == "d"){
-                        for($i=1;$i<=10;$i++){
-                            if($apuesta > 99){
-                                if($apuesta == $sorteo[$i]){
-                                    $ganar = true;
-                                }
-                            }else{
-                                $resto = $sorteo[$i] % 100;
-                                if($resto == $apuesta){
-                                    $ganar = true;
-                                }
-                            }                        
-                        }
-                    }else{
-                        if($apuesta == $sorteo[1]){
-                            $ganar = true;
-                        }
-                    }
+                    $dividendo = $s->verificador($apuesta, $opcion);
                     $win = $_POST['plata'];
-                    if($ganar){
+
+                    if($dividendo != 0){
                         echo "<br>Felicitaciones!!!! acertaste con el $apuesta<br>";
-                        if($opcion == "v"){
-                            $win *= 3;
-                        }else if($opcion == "d"){
-                            $win *= 7;
-                        }else{
-                            $win *= 15;
-                        }
-                        
+                        $win *=$dividendo;
                         echo "Has ganado $win pesos";
                     }else{
                         echo "<br>Has perdido tus $win con el $apuesta";

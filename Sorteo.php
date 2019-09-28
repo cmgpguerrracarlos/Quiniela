@@ -28,6 +28,7 @@ class Sorteo{
 
     public function verificador($nro, $rango){
         $tope;
+        $ganar = 0;
         if($rango == "v"){
             $tope=20;
         }else if($rango == "d"){
@@ -35,19 +36,20 @@ class Sorteo{
         }else{
             $tope=1;
         }
-        //v*3 d*7 c*15  v* 
+        
         for($i=1;$i<=$tope;$i++){
             if($nro > 99){
                 if($nro == $this->numeros[$i]){
-                    $ganar = true;
+                    $ganar = 500;
                 }
             }else{
                 $resto = $this->numeros[$i] % 100;
                 if($resto == $nro){
-                    $ganar = true;
+                    $ganar = 70;
                 }
             }                        
         }
+        $ganancia = $ganar/$tope;
         return $ganancia;
     }
 };
